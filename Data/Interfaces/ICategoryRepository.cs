@@ -6,7 +6,7 @@ using web_store.Data.Models;
 
 namespace web_store.Data.Interfaces
 {
-    interface ICategoryRepository
+   public interface ICategoryRepository
     {
         IEnumerable<Category> Categories { get; }
     }
