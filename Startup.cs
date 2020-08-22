@@ -49,7 +49,8 @@ namespace web_store
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
-            
+
+            DbInitializer.Seed(app);
         }
         
     }
