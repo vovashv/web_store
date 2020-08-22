@@ -14,6 +14,7 @@ using web_store.Data;
 using web_store.Data.Interfaces;
 using web_store.Data.mocks;
 using web_store.Data.Mocks;
+using web_store.Data.Repositories;
 
 namespace web_store
 {
@@ -35,8 +36,8 @@ namespace web_store
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<IDrinkRepository, MockDrinkRepository>();
-            services.AddTransient<ICategoryRepository, MockCategoryRepository>();
+            services.AddTransient<IDrinkRepository, DrinkRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddMvc();
         }
 

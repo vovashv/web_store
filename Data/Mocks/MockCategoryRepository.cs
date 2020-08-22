@@ -14,16 +14,10 @@ namespace web_store.Data.mocks
             get
             {
                 return new List<Category>
-                     {
-                        new Category { CategoryName = "Tea", Description = "Non-alcoholic drinks" },
-                         new Category { CategoryName = "Beer", Description = "Alcoholic drinks" },
-                          new Category { CategoryName = "Coffy", Description = "Non-alcoholic drinks" },
-                           new Category { CategoryName = "Dairy products", Description = "Non-alcoholic drinks" },
-                            new Category { CategoryName = "Vodka", Description = "Alcoholic drinks" },
-                             new Category { CategoryName = "Wine", Description = "Alcoholic drinks" },
-                              new Category { CategoryName = "Cognac", Description = "Alcoholic drinks" },
-                               new Category { CategoryName = "Mineral Water", Description = "Non-alcoholic drinks" }
-                     };
+                {
+                        new Category { CategoryName = "Alcoholic drinks", Description = "Alcoholic drinks" },
+                        new Category { CategoryName = "Non-alcoholic drinks", Description = "Non-alcoholic drinks" }
+                };
             }
         }
     }
