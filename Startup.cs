@@ -14,6 +14,7 @@ using web_store.Data;
 using web_store.Data.Interfaces;
 using web_store.Data.mocks;
 using web_store.Data.Mocks;
+using web_store.Data.Models;
 using web_store.Data.Repositories;
 
 namespace web_store
@@ -38,7 +39,13 @@ namespace web_store
 
             services.AddTransient<IDrinkRepository, DrinkRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => ShoppingCart.GetCart(sp));
+
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,7 @@ namespace web_store
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
 
             DbInitializer.Seed(app);
