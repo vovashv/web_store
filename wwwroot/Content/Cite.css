@@ -1,10 +1,12 @@
 ﻿﻿#cartButton {
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 nav {
-    padding: 8px;
+    padding: 10px;
 }
+
+
 
 .loginForm {
     margin: 10%;
@@ -31,7 +33,7 @@ a.remove {
 
 .center_div {
     margin: 0 auto;
-    width: 80% /* value of your choice which suits your alignment */
+    width: 75% /* value of your choice which suits your alignment */
 }
 
 .marginTop {
