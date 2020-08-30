@@ -1,12 +1,10 @@
 ﻿﻿#cartButton {
-    margin-right: 10px;
+    margin-right: 8px;
 }
 
 nav {
-    padding: 10px;
+    padding: 8px;
 }
-
-
 
 .loginForm {
     margin: 10%;
@@ -33,7 +31,7 @@ a.remove {
 
 .center_div {
     margin: 0 auto;
-    width: 75% /* value of your choice which suits your alignment */
+    width: 80% /* value of your choice which suits your alignment */
 }
 
 .marginTop {
@@ -46,8 +44,3 @@ a.remove {
 
 .formPullRightButton {
     margin-right: 10px !important
-}
-
-.carousel img {
-    min-width: 100%;
-}

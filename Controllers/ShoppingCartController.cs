@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using web_store.Data.Interfaces;
 using web_store.Data.Models;
@@ -19,7 +20,7 @@ namespace web_store.Controllers
             _drinkRepository = drinkRepository;
             _shoppingCart = shoppingCart;
         }
-
+        [Authorize]
         public ViewResult Index()
         {
             var items = _shoppingCart.GetShoppingCartItems();
@@ -32,7 +33,8 @@ namespace web_store.Controllers
             };
             return View(sCVM);
         }
-            public RedirectToActionResult AddToShoppingCart(int drinkId)
+        [Authorize]
+        public RedirectToActionResult AddToShoppingCart(int drinkId)
         {
             var selectedDrink = _drinkRepository.Drinks.FirstOrDefault(p => p.DrinkId == drinkId);
             if (selectedDrink != null)
