@@ -1,15 +1,15 @@
 ﻿@model ShoppingCartViewModel
 
 <div class="row checkoutForm">
-    <h2>Your shopping cart</h2>
-    <h4>Here are the drinks in your shopping cart.</h4>
+    <h2>Кошик</h2>
+    <h4>Всі додані товари</h4>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Selected amount</th>
-                <th>Drink</th>
-                <th class="text-right">Price</th>
-                <th class="text-right">Subtotal</th>
+                <th class="text-center">Кількість</th>
+                <th class="text-center">Товар</th>
+                <th class="text-center">Ціна</th>
+                <th class="text-right">Підсумок</th>
                 <th></th>
             </tr>
         </thead>
@@ -18,8 +18,8 @@
             {
                 <tr>
                     <td class="text-center">@line.Amount</td>
-                    <td class="text-left">@line.Drink.Name</td>
-                    <td class="text-right">@line.Drink.Price.ToString("c")</td>
+                    <td class="text-center">@line.Drink.Name</td>
+                    <td class="text-center">@line.Drink.Price.ToString("c")</td>
                     <td class="text-right">
                         @((line.Amount * line.Drink.Price).ToString("c"))
                     </td>
@@ -29,7 +29,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3" class="text-right">Total:</td>
+                <td colspan="3" class="text-right">Всього:</td>
                 <td class="text-right">
                     @Model.ShoppingCartTotal.ToString("c")
                 </td>
