@@ -1,11 +1,11 @@
 ﻿@model ShoppingCartViewModel
 
-@*@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
-@inject SignInManager<IdentityUser> SignInManager*@
+@inject SignInManager<IdentityUser> SignInManager
 
 
-@if (Model.ShoppingCart.ShoppingCartItems.Count > 0 )// && SignInManager.IsSignedIn(User))
+@if (Model.ShoppingCart.ShoppingCartItems.Count > 0  && SignInManager.IsSignedIn(User))
 {
     <li>
         <a asp-controller="ShoppingCart">

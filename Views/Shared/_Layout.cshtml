@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/site.css" rel="stylesheet" />
+    <link href="~/Content/Cite.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 
@@ -31,11 +31,11 @@
                     @await Component.InvokeAsync("CategoryMenu")
                     <li><a asp-controller="About" asp-action="Index">About</a></li>
                     @await Component.InvokeAsync("ShoppingCartSummary")
-                @await Html.PartialAsync("LoginPartial")
                 </ul>
+                    @await Html.PartialAsync("LoginPartial")
                 <form class="navbar-form navbar-right" asp-controller="Drink" asp-action="Search" method="get">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search for a drink" name="searchString" value="@ViewData["searchString"]">
+                        <input type="text" class="form-control" placeholder="Пошук" name="searchString" value="@ViewData["searchString"]">
                     </div>
                 </form>
             </div>
@@ -48,5 +48,6 @@
             <p><a target="_blank" href="https://github.com/vovashv/web_store">&copy; 2020 - v.shv</a></p>
         </footer>
     </div>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -1,4 +1,6 @@
 ﻿@model Drink
+@*@model web_store.Data.Models.Drink*@
+
 
 <div class="container marginTop">
     <div class="row">
@@ -13,10 +15,9 @@
                 <!--Title-->
                 <h4 class="card-title">@Model.Name</h4>
                 <!--Text-->
-                <p class="card-text">@Model.LongDescription.</p>
-              @*<a asp-controller="Drink" asp-action="List" class="btn btn-primary">Show all drinks</a>*@
+                <p class="card-text">@Model.LongDescription</p>
                 <p class="btn btn-group pull-right">
-                    <a asp-controller="Drink" asp-action="List" class="btn btn-default">Show all drinks</a>
+                    <a asp-controller="Drink" asp-action="List" class="btn btn-default">Всі товари</a>
                     <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-drinkId="@Model.DrinkId">
                         Add @Model.Name to cart
                     </a>
@@ -24,3 +25,4 @@
             </div>
         </div>
     </div>
+</div>
