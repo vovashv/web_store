@@ -12,6 +12,7 @@ namespace web_store.Controllers
 
     public class DrinkController : Controller
     {
+
         private readonly IDrinkRepository _drinkRepository;
         private readonly ICategoryRepository _categoryRepository;
 
@@ -23,41 +24,59 @@ namespace web_store.Controllers
 
         public ViewResult List(string category)
         {
-            //var drinks = _drinkRepository.Drinks;
-
-            //DrinkListViewModel vm = new DrinkListViewModel();
-            //vm.Drinks = _drinkRepository.Drinks;
-            //vm.CurrentCategory = "DrinkCategory";
-
-            //return View(vm);
-
             string _category = category;
             IEnumerable<Drink> drinks;
             string currentCategory = string.Empty;
+
             if (string.IsNullOrEmpty(category))
             {
-                drinks = _drinkRepository.Drinks.OrderBy(n => n.DrinkId);
+                drinks = _drinkRepository.Drinks.OrderBy(p => p.DrinkId);
                 currentCategory = "All drinks";
             }
             else
             {
-                if (string.Equals("Alcoholic",_category,StringComparison.OrdinalIgnoreCase))
-                {
-                    drinks = _drinkRepository.Drinks.Where(p => p.Category.CategoryName.Equals("Alcoholic")).OrderBy(p=>p.Name);
-                }
+                if (string.Equals("Alcoholic", _category, StringComparison.OrdinalIgnoreCase))
+                    drinks = _drinkRepository.Drinks.Where(p => p.Category.CategoryName.Equals("Alcoholic")).OrderBy(p => p.Name);
                 else
-                {
                     drinks = _drinkRepository.Drinks.Where(p => p.Category.CategoryName.Equals("Non-alcoholic")).OrderBy(p => p.Name);
-                }
+
                 currentCategory = _category;
             }
-            var drinkListViewModel = new DrinkListViewModel
+
+            return View(new DrinkListViewModel
             {
                 Drinks = drinks,
                 CurrentCategory = currentCategory
-            };
-            return View(drinkListViewModel);
+            });
+        }
+
+        public ViewResult Search(string searchString)
+        {
+            string _searchString = searchString;
+            IEnumerable<Drink> drinks;
+            string currentCategory = string.Empty;
+
+            if (string.IsNullOrEmpty(_searchString))
+            {
+                drinks = _drinkRepository.Drinks.OrderBy(p => p.DrinkId);
+            }
+            else
+            {
+                drinks = _drinkRepository.Drinks.Where(p => p.Name.ToLower().Contains(_searchString.ToLower()));
+            }
+
+            return View("~/Views/Drink/List.cshtml", new DrinkListViewModel { Drinks = drinks, CurrentCategory = "All drinks" });
+        }
+
+        public ViewResult Details(int drinkId)
+        {
+            var drink = _drinkRepository.Drinks.FirstOrDefault(d => d.DrinkId == drinkId);
+            if (drink == null)
+            {
+                return View("~/Views/Error/Error.cshtml");
+            }
+            return View(drink);
         }
     }
-
 }
+        

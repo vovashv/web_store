@@ -45,6 +45,7 @@ namespace web_store
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => ShoppingCart.GetCart(sp));
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             services.AddMvc();
             services.AddMemoryCache();
@@ -63,6 +64,7 @@ namespace web_store
             //  app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
+                routes.MapRoute(name: "drinkdetails", template: "Drink/Details/{drinkId?}", defaults: new { Controller = "Drink", action = "Details" });
                 routes.MapRoute(name: "categoryFilter", template: "Drink/{action}/{category?}", defaults: new { Controller="Drink", action="List" });
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });

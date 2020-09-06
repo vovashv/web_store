@@ -49,7 +49,7 @@ namespace web_store.Controllers
 
         public IActionResult CheckoutComplete()
         {
-            ViewBag.CheckoutCompleteMessage = "Thanks for your order! :) ";
+            ViewBag.CheckoutCompleteMessage = "Замовлення прийнято до обробки! :) ";
             return View();
         }
     }

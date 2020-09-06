@@ -63,11 +63,13 @@ namespace web_store.Controllers
                 var result = await _userManager.CreateAsync(user, loginViewModel.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("LoggedIn", "Account");
                 }
             }
             return View(loginViewModel);
         }
+        public ViewResult LoggedIn() => View();
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Logout()

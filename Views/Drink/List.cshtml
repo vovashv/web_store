@@ -1,35 +1,11 @@
-﻿@*@using web_store.ViewModels
-@model DrinkListViewModel*@
+﻿@using web_store.ViewModels
+@model DrinkListViewModel
 
 
-<div>
-    <h2>Всі напої</h2>
-</div>
 
-<h2>@Model.CurrentCategory</h2>
-
-@{ 
-    foreach (var drink in Model.Drinks)
+<div class="row marginTop">
+    @foreach (var drink in Model.Drinks)
     {
-    @*<div>
-        <h4>Drink Name: @drink.Name</h4>
-        <p>Price: @drink.Price.ToString("c")</p>
-    </div>*@
-<div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-        <img src="@drink.ImageThumbnailUrl" alt=""  />
-        <div class=" caption">
-            <h3 class=" pull-right"@drink.Price.ToString("c")></h3>
-            <h3>
-                <a>@drink.Name</a>
-            </h3>
-            <p>
-                @drink.ShortDescription
-            </p>
-        </div>
-
-    </div>
-
-</div>
+        @Html.Partial("DrinksSummary", drink)
     }
-}
+</div>
