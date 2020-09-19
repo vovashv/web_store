@@ -13,7 +13,7 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-
+   
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -23,7 +23,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">My web_store</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/Images/Скриншот 2020-09-14 18.30.54.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -32,7 +34,7 @@
                     <li><a asp-controller="About" asp-action="Index">Про алкоголь</a></li>
                     @await Component.InvokeAsync("ShoppingCartSummary")
                 </ul>
-                    @await Html.PartialAsync("LoginPartial")
+                @await Html.PartialAsync("LoginPartial")
                 <form class="navbar-form navbar-right" asp-controller="Drink" asp-action="Search" method="get">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Пошук" name="searchString" value="@ViewData["searchString"]">
@@ -41,6 +43,7 @@
             </div>
         </div>
     </nav>
+
     <div class="container body-content" style="padding:50px;">
         @RenderBody()
         <hr />
